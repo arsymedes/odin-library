@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f4429dd323.js" crossorigin="anonymous"></script>
+    <title>Odin Library</title>
+  </head>
+  <body>
+    <div class="popup">
+      <form action="" method="get" id="my-form">
+        <h1>Add a New Book</h1>
+        <div class="form-section">
+          <label for="title"><i class="fa-solid fa-book"></i></label>
+          <input type="text" id="title" name="title" placeholder="Title">
+        </div>
+        <div class="form-section">
+          <label for="author"><i class="fa-solid fa-user"></i></label>
+          <input type="text" id="author" name="author" placeholder="Author">
+        </div>
+        <div class="form-section">
+          <label for="pages"><i class="fa-solid fa-file"></i></label>
+          <input type="number" min="1" id="pages" name="pages" placeholder="Page Count">
+        </div>
+        <fieldset class="radio-form">
+          <legend>Have you finished reading the book?</legend>
+          <ul>
+            <li>
+              <input type="radio" id="radio-yes" name="read" value="true">
+              <label class="yes" for="radio-yes"><i class="fa-solid fa-check"></i></label>
+            </li>
+            <li>
+              <input type="radio" id="radio-no" name="read" value="false">
+              <label class="no" for="radio-no"><i class="fa-solid fa-xmark"></i></label>
+            </li>
+          </ul>
+        </fieldset>
+        <div class="form-buttons">
+          <button type="submit" form="my-form">Submit</button>
+          <button type="button" id="cancel">Cancel</button>
+        </div>
+      </form> 
+    </div>
+    <button class="new-book">Add New Book</button>
+    <h1>My Library</h1>
+    <div class="book-container">
+      <div class="book">Harry Potter</div>
+      <div class="book">The Hobbit</div>
+    </div>
+  </body>
+  <script src="./javascript.js"></script>
+</html>
