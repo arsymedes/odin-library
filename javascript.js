@@ -7,26 +7,7 @@ document.querySelector('#cancel').addEventListener("click", function() {
 });
 
 
-let myLibrary = [
-  {
-    "title": "Harry Potter",
-    "author": "J. K. Rowling",
-    "pages": 500,
-    "read": true
-  },
-  {
-    "title": "Growth Mindset",
-    "author": "Albert Andersen",
-    "pages": 500,
-    "read": false
-  },
-  {
-    "title": "Introduction to Electrodynamics",
-    "author": "Annisa Salsabila",
-    "pages": 500,
-    "read": true
-  }
-];
+let myLibrary = [];
 
 function Book(title, author, pages, read) {
   this.title = title;
