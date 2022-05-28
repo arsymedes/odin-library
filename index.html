@@ -35,7 +35,7 @@
               <label class="yes" for="radio-yes"><i class="fa-solid fa-check"></i></label>
             </li>
             <li>
-              <input type="radio" id="radio-no" name="read" value="false">
+              <input type="radio" id="radio-no" name="read" value="">
               <label class="no" for="radio-no"><i class="fa-solid fa-xmark"></i></label>
             </li>
           </ul>
@@ -46,12 +46,15 @@
         </div>
       </form> 
     </div>
-    <button class="new-book">Add New Book</button>
     <h1>My Library</h1>
     <div class="book-container">
-      <div class="book">Harry Potter</div>
-      <div class="book">The Hobbit</div>
+      <div class="book" data-book="${index}">
+        <div class="big-text">${book["title"]}</div>
+        <div class="small-text">${book["author"]}</div>
+        <div class="small-text">${book["pages"]} Pages</div>
+      </div>`
     </div>
+    <button class="new-book">Add New Book</button>
   </body>
   <script src="./javascript.js"></script>
 </html>

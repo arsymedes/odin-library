@@ -1,4 +1,32 @@
-let myLibrary = [];
+document.querySelector(".new-book").addEventListener("click", function() {
+	document.querySelector('.popup').style.display = "grid";
+});
+
+document.querySelector('#cancel').addEventListener("click", function() {
+	document.querySelector('.popup').style.display = "none";
+});
+
+
+let myLibrary = [
+  {
+    "title": "Harry Potter",
+    "author": "J. K. Rowling",
+    "pages": 500,
+    "read": true
+  },
+  {
+    "title": "Growth Mindset",
+    "author": "Albert Andersen",
+    "pages": 500,
+    "read": false
+  },
+  {
+    "title": "Introduction to Electrodynamics",
+    "author": "Annisa Salsabila",
+    "pages": 500,
+    "read": true
+  }
+];
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -6,23 +34,61 @@ function Book(title, author, pages, read) {
   this.pages = pages;
   this.read = read;
   this.info = function() {
-    if (read) return `${this.title} by ${this.author}, ${this.pages} pages, finished reading`
-    else return `${this.title} by ${this.author}, ${this.pages} pages, finished reading`
+    if (read) return `${this.title} by ${this.author}, ${this.pages} pages, finished reading`;
+    else return `${this.title} by ${this.author}, ${this.pages} pages, finished reading`;
   }
 }
 
-function addBookToLibrary(title, author, pages, read) {
+function addBookToLibrary(event, title, author, pages, read) {
+  event.preventDefault();
   myLibrary[myLibrary.length] = new Book(title, author, pages, read);
+  document.forms[0].reset();
 }
 
-document.querySelector(".new-book").addEventListener("click", () => {
-	document.querySelector('.popup').style.display = "grid";
-});
+const bookContainer = document.querySelector(".book-container")
 
-document.querySelector('#cancel').addEventListener("click", () => {
-	document.querySelector('.popup').style.display = "none";
-});
+function displayBook(list) {
+  bookHTML = ``
+  for (let [index, book] of list.entries()) {
+    msg = ""
+    toggleUnread = ""
+    if (book["read"]) {
+      msg = "Read"
+    } else {
+      msg = "Unread"
+      toggleUnread = "toggle-unread"
+    }
 
-// addBookToLibrary("Sapiens", "Harari", 500, true)
-// addBookToLibrary("Naruto", "Kishimoto", 500, false)
-// console.log(myLibrary)
+    bookHTML += `<div class="book" data-book="${index}"><div class="big-text">${book["title"]}</div><div class="small-text">${book["author"]}</div><div class="small-text">${book["pages"]} Pages</div><button class="toggle-read ${toggleUnread}">${msg}</button><button class="remove-book">Remove</button></div>`
+  }
+  bookContainer.innerHTML = bookHTML
+  document.querySelectorAll('.remove-book').forEach((element) => {
+    element.addEventListener("click", () => {
+      num = element.parentElement.dataset.book;
+      myLibrary.splice(num, 1);
+      displayBook(myLibrary)
+    })
+  })
+
+  document.querySelectorAll(".toggle-read").forEach((element) => {
+    element.addEventListener("click", () => {
+      element.classList.toggle("toggle-unread")
+      num = element.parentElement.dataset.book
+      if (element.classList.contains("toggle-unread")) {
+        myLibrary[num]["read"] = false
+      } else {
+        myLibrary[num]["read"] = true
+      }
+      displayBook(myLibrary)
+    })
+  })
+}
+
+displayBook(myLibrary)
+
+document.querySelector('button[type="submit"]').addEventListener("click", (event) => {
+  addBookToLibrary(event, document.getElementById("title").value, document.getElementById("author").value, document.getElementById("pages").value, document.querySelector('input[name="read"]:checked').value);
+  displayBook(myLibrary);
+})
+
+
