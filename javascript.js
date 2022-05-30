@@ -7,7 +7,32 @@ document.querySelector('#cancel').addEventListener("click", function() {
 });
 
 
-let myLibrary = [];
+let myLibrary = [
+  {
+    "title": "The Hobbit",
+    "author": "J.R.R Tolkien",
+    "pages": 304,
+    "read": false
+  },
+  {
+    "title": "Sapiens",
+    "author": "Yuval Noah Harari",
+    "pages": 443,
+    "read": true
+  },
+  {
+    "title": "Introduction to Electrodynamics",
+    "author": "David J. Griffiths",
+    "pages": 620,
+    "read": true
+  },
+  {
+    "title": "Quintessential Quintuplets",
+    "author": "Negi Haruba",
+    "pages": 2800,
+    "read": true
+  },
+];
 
 function Book(title, author, pages, read) {
   this.title = title;
