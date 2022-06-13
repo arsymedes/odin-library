@@ -34,12 +34,15 @@ let myLibrary = [
   },
 ];
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.info = function() {
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+
+  info() {
     if (read) return `${this.title} by ${this.author}, ${this.pages} pages, finished reading`;
     else return `${this.title} by ${this.author}, ${this.pages} pages, finished reading`;
   }
